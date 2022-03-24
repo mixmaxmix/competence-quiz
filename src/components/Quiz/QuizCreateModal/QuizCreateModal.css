@@ -1,0 +1,32 @@
+.background-modal {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* body {
+    overflow-y: hidden;
+} */
+
+.quiz-form {
+    background-color: var(--white);
+    border: 1px var(--gray-black) solid;
+    position: fixed;
+    width: 500px;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.quiz-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
