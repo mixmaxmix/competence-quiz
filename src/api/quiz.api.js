@@ -1,11 +1,18 @@
 import axios from "axios";
 
 export const getQuiz = async() => {
-    return await axios
+    const response = await axios
         .get(`/api/v1/quiz`, {
             headers: {
                 Authorization: localStorage.getItem('token')
-            }})
+            }});
+
+// .then(function (response) {
+//         return response.data.result;
+//     }
+
+
+    return response.data.result;
 }
 
 export const getQuizById = async(id) => {
