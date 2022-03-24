@@ -18,13 +18,13 @@ export default function SignIn() {
             .then(
                 (response) => {
                     if(response.status == 200){
-                        setIsSignIn(true)
                         localStorage.setItem('isSignIn', true)
                         localStorage.setItem('token', `Bearer ${response.data.result.token}`)
                         localStorage.setItem('role', `${response.data.result.role}`)
                         localStorage.setItem('email', `${response.data.result.email}`)
                         localStorage.setItem('firstName', `${response.data.result.firstName}`)
                         localStorage.setItem('lastName', `${response.data.result.lastName}`)
+                        window.location.reload()
                     }
                 }
             )

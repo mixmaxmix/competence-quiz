@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { Link, Redirect, Navigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import '../../Auth/Auth.css'
 
 export default function SignUp() {
@@ -32,6 +32,7 @@ export default function SignUp() {
                         localStorage.setItem('email', `${response.data.result.email}`)
                         localStorage.setItem('firstName', `${response.data.result.firstName}`)
                         localStorage.setItem('lastName', `${response.data.result.lastName}`)
+                        window.location.reload()
                     }
                 }
             )
@@ -58,13 +59,6 @@ export default function SignUp() {
                 break;
         }
     }
-
-    // "email": "string",
-    // "firstName": "string",
-    // "lastName": "string",
-    // "middleName": "string",
-    // "password": "string"
-
 
     return (
       <div className='container'>

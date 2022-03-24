@@ -10,7 +10,7 @@ export default function Header() {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        if(role == 'ROLE_ADMIN') {
+        if (isAdmin) {
             setIsAdmin(true)
         }
     }, [])
@@ -26,6 +26,7 @@ export default function Header() {
     const logOutHandler = () => {
         localStorage.clear()
         setIsAdmin(false)
+        window.location.reload()
     }
 
     const adminHandler = () => {

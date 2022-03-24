@@ -1,27 +1,23 @@
 import axios from "axios";
 
 export const getQuizQuestionsUser = async(quizId) => {
-    const response = await axios
+    return await axios
         .get(`/api/v1/quiz/${quizId}/principal`, {
             headers: {
                 Authorization: localStorage.getItem('token')
-            }})
-
-    return response.data.result
+            }}).then(res => { return res.data.result })
 }
 
 export const getQuizQuestionsAdmin = async(quizId) => {
-    const response = await axios
+    return await axios
         .get(`/api/v1/quiz/${quizId}/questions`, {
             headers: {
                 Authorization: localStorage.getItem('token')
-            }});
-
-    return response.data.result;
+            }}).then(res => { return res.data.result });
 }
 
 export const createQuizQuestion = async(quizId, name, answers) => {
-    const response = await axios
+    return await axios
         .post(`/api/v1/quiz/question`, {
             quizId: quizId,
             name: name,
@@ -29,13 +25,11 @@ export const createQuizQuestion = async(quizId, name, answers) => {
         }, {
             headers: {
                 Authorization: localStorage.getItem('token')
-            }})
-
-    return response.data.result;
+            }}).then(res => { return res.data.result })
 }
 
 export const updateQuizQuestion = async(questionId, quizId, name, answers) => {
-    const response = await axios
+    return await axios
         .put(`/api/v1/quiz/question/${questionId}`, {
             questionId: questionId,
             quizId: quizId,
@@ -44,17 +38,13 @@ export const updateQuizQuestion = async(questionId, quizId, name, answers) => {
         }, {
             headers: {
                 Authorization: localStorage.getItem('token')
-            }})
-
-    return response.data.result;
+            }}).then(res => { return res.data.result })
 }
 
 export const deleteQuizQuestion = async(id) => {
-    const response = await axios
+    return await axios
         .delete(`/api/v1/quiz/question/${id}`, {
             headers: {
                 Authorization: localStorage.getItem('token')
-            }})
-
-    return response.data.result;
+            }}).then(res => { return res.data.result })
 }

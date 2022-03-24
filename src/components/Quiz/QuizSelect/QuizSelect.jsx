@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../../Quiz/Quiz.css'
 import QuizSelectContainer from './QuizSelectContainer'
-import axios from 'axios'
+import {getQuiz} from "../../../api/quiz.api";
+
 
 export default function QuizSelect() {
   const [dataQuiz, setDataQuiz] = useState(null);
@@ -18,33 +19,15 @@ export default function QuizSelect() {
   }, [dataQuiz])
 
   const getData = async() => {
-    const response =
-        await axios
-            .get('/api/v1/quiz')
-    setDataQuiz(response.data.result)
+      setDataQuiz(await getQuiz())
   }
-
-  const createQuiz = () => {
-    axios
-        .post('/api/v1/quiz', {
-              maxPassCount: 10,
-              name: 'нок'
-            },{
-              headers: {
-                Authorization: localStorage.getItem('token')
-              }
-            }
-        )
-  }
-
-  // createQuiz()
 
   return (
       <div className='container'>
         <div className='quiz-container'>
           {}
           {isLoading ?
-              dataQuiz.map(el => {return <QuizSelectContainer key={el.id} name={el.name} maxPassCount={el.maxPassCount}/>})
+              dataQuiz.map(el => {return <QuizSelectContainer key={el.id} id={el.id} name={el.name} maxPassCount={el.maxPassCount}/>})
               : ''}
           <h1 className='quiz-title'>Выбор теста</h1>
         </div>
